@@ -60,13 +60,14 @@ const updateQuantity = handlingError(async (req, res, next) => {
     res.json({ message: "success", cart: cartExist })
 })
 
-// const getLogedUserCart= catchAsyncError(async (req,res,next)=>{
-//     const cartItems =await cartModel.findOne({user:req.user._id}).populate('cartItems.product')
-//     !cartItems&&next(new AppError("cart not found",401))
-//     cartItems&& res.json({message:"success",cart:cartItems})
-// })
+const getLogedUserCart = handlingError(async (req,res,next)=>{
+    const cartItems =await cartModel.findOne({userId:req.user._id}).populate('cartItems.product')
+    !cartItems&&next(new AppError("cart not found",401))
+    cartItems&& res.json({message:"success",cart:cartItems})
+})
 export {
     addProductToCart ,
     removeProductFromCart ,
-    updateQuantity
+    updateQuantity,
+    getLogedUserCart
 }
