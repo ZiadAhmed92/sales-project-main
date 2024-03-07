@@ -1,6 +1,6 @@
 import { handlingError } from "../../utils/handlingError.js"
 import { generateToken } from "../../utils/generateToken.js"
-import { AppError } from "../../utils/appError.js"
+import { AppError } from "../../utils/AppError.js"
 import { userModel } from "../../../database/models/user.model.js"
 import jwt from 'jsonwebtoken'
 export const signUp = handlingError(async (req, res, next) => {
